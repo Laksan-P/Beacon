@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Aegis - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#d32f2f">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="card login-card">
+
+      <h2 class="title">Field Responder Login</h2>
+      <p class="subtext">
+        Login once while online. Access remains available offline.
+      </p>
+
+      <form id="loginForm">
+
+        <label class="label">Name</label>
+        <input type="text" id="name" class="select" required>
+
+        <label class="label">Contact Number</label>
+        <input type="tel" id="contact" class="select" required>
+
+        <label class="label">NIC</label>
+        <input type="text" id="nic" class="select" required>
+
+        <button type="submit" class="btn">Continue</button>
+
+      </form>
+
+      <p id="loginMsg" class="login-msg"></p>
+
+    </div>
+  </div>
+
+  <script>
+    if (localStorage.getItem("aegisUser")) {
+      window.location.href = "index.html";
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const user = {
+        name: document.getElementById("name").value,
+        contact: document.getElementById("contact").value,
+        nic: document.getElementById("nic").value
+      };
+
+      localStorage.setItem("aegisUser", JSON.stringify(user));
+
+      document.getElementById("loginMsg").textContent = "Login successful";
+
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 500);
+    });
+
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+        navigator.serviceWorker
+            .register("/service-worker.js")
+            .then((reg) => console.log("SW registered", reg))
+            .catch((err) => console.log("SW registration failed", err));
+        });
+    }
+    
+  </script>
+
+</body>
+
+</html>

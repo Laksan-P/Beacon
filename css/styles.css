@@ -1,0 +1,246 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  background: #f4f6f8;
+  margin: 0;
+}
+
+/* Network status colors */
+.online {
+  background-color: #0f7c4a !important;
+  color: #d1fae5 !important;
+}
+
+.offline {
+  background-color: #7f1d1d !important;
+  color: #fee2e2 !important;
+}
+
+.top-bar {
+  background: #0f7c4a;
+  color: white;
+  padding: 10px 20px;
+  font-weight: 600;
+}
+
+.container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
+.title {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.subtext {
+  color: #666;
+  font-size: 14px;
+}
+
+.label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.gps-box {
+  background: #f1f3f5;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+/* Severity Slider */
+.severity-slider {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.severity-levels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.critical { color: #d32f2f; }
+.high { color: #f57c00; }
+.medium { color: #fbc02d; }
+.low { color: #388e3c; }
+.minimal { color: #2e7d32; }
+
+.severity-text {
+  font-weight: bold;
+}
+
+.btn {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #2563eb;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 6px;
+  font-size: 13px;
+}
+
+/* ---------------- LOGIN PAGE ---------------- */
+
+.login-card {
+  margin-top: 80px;
+}
+
+.login-card input {
+  margin-bottom: 10px;
+}
+
+.login-msg {
+  text-align: center;
+  color: #0f7c4a;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* Mobile friendliness */
+@media (max-width: 480px) {
+  .login-card {
+    margin-top: 40px;
+  }
+}
+
+
+/* Dashboard specific */
+h1, h2 {
+  margin-top: 0;
+}
+
+.container {
+  max-width: 1100px;     /* increases length for web */
+  width: 100%;
+  margin: 0 auto;        /* center the container */
+  padding: 20px;
+}
+
+.card {
+  margin: 20px;
+  padding: 30px;
+}
+
+#map {
+  height: 420px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background: #f1f3f5;
+}
+
+th, td {
+  padding: 8px;
+  font-size: 13px;
+}
+
+tbody tr:hover {
+  background: #f9fafb;
+}
+
+td:nth-child(3) {
+  font-weight: 600;
+}
+
+/* ================= RESPONSIVE DASHBOARD TABLE ================= */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Keep table readable */
+#incidentTable {
+  min-width: 650px;
+}
+
+/* Mobile improvements */
+@media (max-width: 768px) {
+
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  #map {
+    height: 280px;
+  }
+
+  th, td {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .top-bar {
+    width: 100%;              /* content width fits screen */
+    overflow-x: hidden;         /* prevents internal overflow from causing scroll */
+  }
+
+  .top-bar .container {
+    max-width: 1100px;        /* content width */
+    margin: 0 auto;           /* centers content */
+    padding: 0 15px;          /* space on mobile */
+    box-sizing: border-box;
+ }
+}
+
+/* Very small devices */
+@media (max-width: 480px) {
+  #incidentTable {
+    min-width: 600px;
+  }
+}

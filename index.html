@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Aegis</title>
+
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#d32f2f">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+    
+    <script>
+    // Redirect to login if not logged in
+    if (!localStorage.getItem("aegisUser")) {
+        window.location.href = "login.html";
+    }
+    </script>
+
+<body>
+    <header class="top-bar" id="networkStatus">
+        Checking network...
+    </header>
+
+    <div class="container">
+        <h1 class="title">Beacon In The Dark</h1>
+
+        <div class="card">
+            <h2> Report Incident</h2>
+            <p class="subtext">
+                All data is saved locally and syncs automatically when you're online
+            </p>
+
+            <!-- GPS -->
+            <label class="label">GPS Location</label>
+            <div id="geolocationStatus" class="gps-box">
+                Attempting to capture GPS location...
+            </div>
+
+            <!-- Incident Type -->
+            <label class="label">Incident Type</label>
+            <select id="incidentType" class="select" required>
+                <option value="">Select incident type</option>
+                <option>Landslide</option>
+                <option>Flood</option>
+                <option>Road Block</option>
+                <option>Power Line Down</option>
+            </select>
+
+            <!-- Severity -->
+            <label class="label">
+                Severity Level: <span id="severityLabel" class="severity-text medium">Medium</span>
+            </label>
+
+            <input
+                type="range"
+                id="severity"
+                min="1"
+                max="5"
+                value="3"
+                class="severity-slider"
+            />
+
+            <div class="severity-levels">
+                <span class="critical">Critical</span>
+                <span class="high">High</span>
+                <span class="medium">Medium</span>
+                <span class="low">Low</span>
+                <span class="minimal">Minimal</span>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" form="incidentForm" class="btn">
+                Save Report Locally
+            </button>
+
+            <button id="toggleHistory" class="link-btn">
+                View Incident History
+            </button>
+
+            <div id="historySection" style="display:none;">
+                <h3>Saved Incident Reports</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Severity</th>
+                            <th>Lat</th>
+                            <th>Lng</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyTable"></tbody>
+                </table>
+            </div>
+
+            <p id="message"></p>
+        </div>
+    </div>
+
+    <form id="incidentForm"></form>
+
+    <script src="js/dexie.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+        navigator.serviceWorker
+            .register("/service-worker.js")
+            .then((reg) => console.log("SW registered", reg))
+            .catch((err) => console.log("SW registration failed", err));
+        });
+    }
+    </script>
+
+</body>
+</html>

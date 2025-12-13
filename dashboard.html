@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Aegis | Command Dashboard</title>
+
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        #map { height: 500px; width: 100%; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<header class="top-bar">
+    Beacon In The Dark — Command Dashboard
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Live Incidents Map</h2>
+        <div id="map"></div>
+    </div>
+
+    <div class="card">
+    <h2>Real-Time Incident List</h2>
+
+    <div class="table-wrapper">
+    <table id="incidentTable">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Incident Type</th>
+            <th>Severity</th>
+            <th>Timestamp</th>
+            <th>Location (Lat, Lng)</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    </div>
+
+    </div>
+
+
+</div>
+
+<script src="js/dexie.js"></script>
+<script src="js/leaflet.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+
+</html>
