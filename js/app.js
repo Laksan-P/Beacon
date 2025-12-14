@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     severityInput.addEventListener("input", () => {
-        const s = severityMap[severityInput.value];
+        const s = severityDisplayMap[severityInput.value];
         severityLabel.textContent = s.text;
         severityLabel.className = `severity-text ${s.class}`;
     });
